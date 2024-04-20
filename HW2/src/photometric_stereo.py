@@ -41,7 +41,7 @@ class PS:
             light_unit_vector = np.array(light, dtype=np.float64) / np.linalg.norm(light)
             self.light_unit_vectors.append(light_unit_vector)
 
-    def cal_albedo_normal(self):
+    def cal_albedo_normal(self, file_prefix):
         '''
             計算 albedo 和 normal
         '''
@@ -74,8 +74,8 @@ class PS:
         normal = np.array(normal_list).reshape(gray_bmp_height, gray_bmp_wigth, 3)
         normal = cv2.normalize(normal, None, 0, 255, cv2.NORM_MINMAX)
         
-        cv2.imwrite('../output/albedo.png', albedo)
-        cv2.imwrite('../output/normal.png', normal)
+        cv2.imwrite(f'../output/{file_prefix}_albedo.png', albedo)
+        cv2.imwrite(f'../output/{file_prefix}_normal.png', normal)
         
         self.albedo = albedo
         self.normal = normal
