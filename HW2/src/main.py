@@ -3,8 +3,8 @@
 from photometric_stereo import PS
 
 if __name__ == '__main__':
-    bunny = PS('../test_datasets/bunny/')
-    teapot = PS('../test_datasets/teapot/')
+    bunny = PS('../test_datasets/bunny/', 'bunny')
+    teapot = PS('../test_datasets/teapot/', 'teapot')
     
     # bunny
     # 光源單位向量
@@ -12,7 +12,9 @@ if __name__ == '__main__':
     bunny.get_gray_bmps()
     bunny.get_light_unit_vector()
     # 計算 albedo 和 normal
-    bunny.cal_albedo_normal('bunny')
+    bunny.cal_albedo_normal_pq()
+    bunny.cal_height_map()
+    bunny.heigh_map_to_obj()
     
     # teapot
     # 光源單位向量
@@ -20,4 +22,6 @@ if __name__ == '__main__':
     teapot.get_gray_bmps()
     teapot.get_light_unit_vector()
     # 計算 albedo 和 normal
-    teapot.cal_albedo_normal('teapot')
+    teapot.cal_albedo_normal_pq()
+    teapot.cal_height_map()
+    teapot.heigh_map_to_obj()
